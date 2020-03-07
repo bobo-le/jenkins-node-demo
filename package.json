@@ -1,0 +1,26 @@
+{
+  "name": "jenkins-node-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobo-le/jenkins-node-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bobo-le/jenkins-node-demo/issues"
+  },
+  "homepage": "https://github.com/bobo-le/jenkins-node-demo#readme",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "jest": "25.1.0"
+  }
+}
