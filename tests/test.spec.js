@@ -1,5 +1,5 @@
 describe('Tests', () => {
   test('One', () => {
-    expect(true).toBe(false);
+    expect(true).toBe(true);
   });
 });
