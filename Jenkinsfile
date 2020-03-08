@@ -5,7 +5,9 @@ pipeline {
 
   stages {
     stage('Docker-Test') {
+      steps {
         sh 'docker ps'
+      }
     }
     stage('Install') {
       steps {
