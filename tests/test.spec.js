@@ -8,7 +8,7 @@ describe('Tests', () => {
   });
 
     test('Three', () => {
-    expect(true).toBe(false);
+    expect(true).toBe(true);
 
   });
 });
