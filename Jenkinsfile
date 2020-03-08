@@ -4,6 +4,11 @@ pipeline {
   tools {nodejs "NodeJs"}
 
   stages {
+    stage("Env Variables") {
+      steps {
+         sh "printenv | sort"
+      }
+    }
     stage('Build') {
       steps {
         sh 'docker build -t jenkins-pipeline-test .'
