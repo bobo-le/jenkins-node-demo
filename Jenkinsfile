@@ -19,11 +19,6 @@ pipeline {
         sh 'docker run --rm jenkins-pipeline-test npm run test'
       }
     }
-    stage('Clean') {
-      steps {
-
-      }
-    }
   }
   post {
     always {
