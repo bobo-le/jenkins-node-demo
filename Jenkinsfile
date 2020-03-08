@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'docker run --rm jenkins-pipeline-test npm run test'
+        sh 'docker run --rm ${BUILD_TAG} npm run test'
       }
     }
   }
