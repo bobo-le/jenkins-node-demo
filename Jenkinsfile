@@ -4,22 +4,15 @@ pipeline {
   tools {nodejs "NodeJs"}
 
   stages {
-    stage('Docker-Test') {
+    stage('Build') {
       steps {
-        sh 'docker ps'
+        sh 'docker build -t jenkins-pipeline-test .'
       }
     }
-    stage('Install') {
-      steps {
-        sh 'npm i'
-      }
-    }
-
     stage('Test') {
       steps {
-        sh 'npm run test'
+        sh 'docker-compose run --rm jenkins-pipeline-test npm run test'
       }
     }
-
   }
 }

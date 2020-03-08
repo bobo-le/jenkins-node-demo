@@ -10,7 +10,7 @@ COPY . .
 RUN npm i
 
 # Run tests
-RUN npm run test
+#RUN npm run test
 
 # Run app
-RUN node index.js
+#RUN node index.js
