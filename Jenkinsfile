@@ -20,7 +20,6 @@ pipeline {
       }
     }
   }
-
   post {
     always {
         sh 'docker image rm ${BUILD_TAG}'
