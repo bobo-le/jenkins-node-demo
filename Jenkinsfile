@@ -11,12 +11,17 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'docker build -t jenkins-pipeline-test .'
+        sh 'docker build -t ${BUILD_TAG} .'
       }
     }
     stage('Test') {
       steps {
         sh 'docker run --rm jenkins-pipeline-test npm run test'
+      }
+    }
+    stage('Clean') {
+      steps {
+        sh 'docker image rm ${BUILD_TAG}'
       }
     }
   }
