@@ -21,8 +21,13 @@ pipeline {
     }
     stage('Clean') {
       steps {
-        sh 'docker image rm ${BUILD_TAG}'
+
       }
+    }
+  }
+  post {
+    always {
+        sh 'docker image rm ${BUILD_TAG}'
     }
   }
 }
