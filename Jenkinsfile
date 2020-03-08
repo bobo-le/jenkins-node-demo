@@ -24,5 +24,6 @@ pipeline {
     always {
         sh 'docker image rm ${BUILD_TAG}'
     }
+
   }
 }
