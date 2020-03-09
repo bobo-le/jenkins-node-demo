@@ -16,14 +16,13 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'docker run --rm ${BUILD_TAG} npm run test'
+        sh 'make test BUILD_TAG=${BUILD_TAG}'
       }
     }
   }
   post {
     always {
-        sh 'docker image rm ${BUILD_TAG}'
+        sh 'make clean BUILD_TAG=${BUILD_TAG}'
     }
-
   }
 }
