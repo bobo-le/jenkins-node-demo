@@ -19,6 +19,11 @@ pipeline {
         sh 'make test BUILD_TAG=${BUILD_TAG}'
       }
     }
+    stage('Publish') {
+      steps {
+        sh 'make publish RELEASE_TAG=${BRANCH_NAME}'
+      }
+    }
   }
   post {
     always {
