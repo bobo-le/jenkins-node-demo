@@ -11,7 +11,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'docker build -t ${BUILD_TAG} .'
+        sh 'make build BUILD_TAG=${BUILD_TAG}'
       }
     }
     stage('Test') {
