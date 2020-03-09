@@ -23,8 +23,6 @@ pipeline {
       when { tag "release-*" }
       steps {
         sh 'make publish RELEASE_TAG=${TAG_NAME}'
-      }
-      steps {
         sh 'make deployment RELEASE_TAG=${TAG_NAME}'
       }
     }
