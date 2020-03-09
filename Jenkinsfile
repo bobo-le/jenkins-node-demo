@@ -22,7 +22,7 @@ pipeline {
     stage('Publish') {
       when { tag "release-*" }
       steps {
-        sh 'make publish RELEASE_TAG=${BRANCH_NAME}'
+        sh 'make publish RELEASE_TAG=${TAG_NAME}'
       }
     }
   }
