@@ -1,7 +1,7 @@
 pipeline {
   agent any
 
-  tools {nodejs "NodeJs"}
+  // tools {nodejs "NodeJs"}
 
   stages {
     stage("Env Variables") {
