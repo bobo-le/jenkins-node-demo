@@ -5,22 +5,6 @@ pipeline {
   agent any
 
   stages {
-    stage('Prepare') {
-      //when {
-      //  allOf {
-      //    branch "release"
-      //    tag pattern: '^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)', comparator: 'REGEXP'
-      //}
-      steps {
-        script {
-          if (env.BRANCH_NAME != 'release') {
-            echo env.BRANCH_NAME
-          } else {
-            echo env.TAG_NAME
-          }
-        }
-      }
-    }
     stage("Env Variables") {
       steps {
          sh "printenv | sort"
@@ -39,7 +23,11 @@ pipeline {
 
 
     stage('Publish') {
-      when { tag "release-*" }
+      when {
+        allOf {
+          branch "release"
+          tag pattern: '^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)', comparator: 'REGEXP'
+      }
       steps {
         sh 'make publish RELEASE_TAG=${TAG_NAME}'
       }
