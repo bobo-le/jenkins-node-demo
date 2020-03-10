@@ -13,7 +13,7 @@ pipeline {
       //}
       steps {
         script {
-          if (branch != 'release' || tag !=~ /^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)/) {
+          if (branch != 'release') {
             echo branch
           } else {
             echo tag
