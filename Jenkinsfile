@@ -12,6 +12,7 @@ pipeline {
         sh 'make build BUILD_TAG=${BUILD_TAG}'
       }
     }
+
     stage('Test') {
       steps {
         sh 'make test BUILD_TAG=${BUILD_TAG}'
