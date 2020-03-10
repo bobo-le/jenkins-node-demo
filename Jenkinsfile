@@ -1,7 +1,8 @@
+def goFail = false
+
+
 pipeline {
   agent any
-
-  tools {nodejs "NodeJs"}
 
   stages {
     stage("Env Variables") {
@@ -20,7 +21,12 @@ pipeline {
       }
     }
     stage('Publish') {
-      when { tag "release-*" }
+      when {
+        allOf {
+          branch "release"
+          tag pattern: /^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)/, comparator: 'REGEXP'
+      }
+      }
       steps {
         sh 'make publish RELEASE_TAG=${TAG_NAME}'
       }

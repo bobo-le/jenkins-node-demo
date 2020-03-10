@@ -10,6 +10,9 @@ clean:
 publish:
 	echo "RELEASE! Publish to registry..."
 
+deployment:
+	echo "DEPLOY! Run docker pull on host and rebuild..."
+
 git-tag:
 	# TODO check if on right branch (which? master? beta? ...?)
 	git tag -a ${TAG} -m "New Version: ${TAG}" HEAD
