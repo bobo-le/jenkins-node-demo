@@ -11,7 +11,7 @@ publish:
 	echo "RELEASE! Publish to registry..."
 
 deployment:
-	echo "DEPLOY! Run dokcer pull on host and rebuild..."
+	echo "DEPLOY! Run docker pull on host and rebuild..."
 
 git-tag:
 	# TODO check if on right branch (which? master? beta? ...?)

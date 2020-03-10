@@ -1,8 +1,6 @@
 pipeline {
   agent any
 
-  // tools {nodejs "NodeJs"}
-
   stages {
     stage("Env Variables") {
       steps {
@@ -23,7 +21,6 @@ pipeline {
       when { tag "release-*" }
       steps {
         sh 'make publish RELEASE_TAG=${TAG_NAME}'
-        sh 'make deployment RELEASE_TAG=${TAG_NAME}'
       }
     }
   }
