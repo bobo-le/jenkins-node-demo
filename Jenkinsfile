@@ -37,5 +37,4 @@ pipeline {
         sh 'make clean BUILD_TAG=${BUILD_TAG}'
     }
   }
-
 }
