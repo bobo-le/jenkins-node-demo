@@ -1,7 +1,24 @@
+def goFail = false
+
+
 pipeline {
   agent any
 
   stages {
+    stage('Prepare') {
+      //when {
+      //  allOf {
+      //    branch "release"
+      //    tag pattern: '^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)', comparator: 'REGEXP'
+      //}
+      script {
+        if (branch != 'release' || tag !=~ '^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)') {
+          echo branch
+        } else {
+          echo tag
+        }
+      }
+    }
     stage("Env Variables") {
       steps {
          sh "printenv | sort"
