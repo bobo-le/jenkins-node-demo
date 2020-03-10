@@ -13,10 +13,10 @@ pipeline {
       //}
       steps {
         script {
-          if (branch != 'release') {
-            echo branch
+          if (env.BRANCH_NAME != 'release') {
+            echo env.BRANCH_NAME
           } else {
-            echo tag
+            echo env.TAG_NAME
           }
         }
       }
