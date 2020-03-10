@@ -20,8 +20,6 @@ pipeline {
         sh 'make test BUILD_TAG=${BUILD_TAG}'
       }
     }
-
-
     stage('Publish') {
       when {
         allOf {
