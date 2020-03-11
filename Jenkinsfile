@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'make build BUILD_TAG=${BUILD_TAG}.toLowerCase()'
+        sh 'make build BUILD_TAG=${BUILD_TAG.toLowerCase()}'
       }
     }
     stage('Test') {
