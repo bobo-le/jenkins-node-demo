@@ -3,7 +3,7 @@ pipeline {
   agent any
 
   environment {
-        def BUILD_VERSION = sh(script: "echo 'jenkins_node_demo' + `date +%s`", returnStdout: true).trim()
+        def BUILD_VERSION = sh(script: "echo jenkins_node_demo_`date +%s`", returnStdout: true).trim()
     }
 
   stages {
