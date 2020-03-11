@@ -14,12 +14,12 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'make build BUILD_TAG=${TAG_UNIXTIME}'
+        sh 'make build BUILD_TAG=${BUILD_VERSION}'
       }
     }
     stage('Test') {
       steps {
-        sh 'make test BUILD_TAG=${TAG_UNIXTIME}'
+        sh 'make test BUILD_TAG=${BUILD_VERSION}'
       }
     }
     stage('Publish') {
@@ -36,7 +36,7 @@ pipeline {
   }
   post {
     always {
-        sh 'make clean BUILD_TAG=${TAG_UNIXTIME}'
+        sh 'make clean BUILD_TAG=${BUILD_VERSION}'
     }
 
   }
