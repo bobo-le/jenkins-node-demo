@@ -1,5 +1,3 @@
-def goFail = false
-
 
 pipeline {
   agent any
@@ -12,12 +10,12 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'make build BUILD_TAG=${BUILD_TAG}'
+        sh 'make build BUILD_TAG=${GIT_COMMIT}'
       }
     }
     stage('Test') {
       steps {
-        sh 'make test BUILD_TAG=${BUILD_TAG}'
+        sh 'make test BUILD_TAG=${GIT_COMMIT}'
       }
     }
     stage('Publish') {
@@ -34,7 +32,8 @@ pipeline {
   }
   post {
     always {
-        sh 'make clean BUILD_TAG=${BUILD_TAG}'
+        sh 'make clean BUILD_TAG=${GIT_COMMIT}'
     }
+
   }
 }
