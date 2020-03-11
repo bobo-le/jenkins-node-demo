@@ -26,7 +26,7 @@ pipeline {
       when {
         allOf {
           branch "release"
-          tag pattern: /^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)/, comparator: 'REGEXP'
+          //tag pattern: /^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)/, comparator: 'REGEXP'
         }
       }
       steps {
