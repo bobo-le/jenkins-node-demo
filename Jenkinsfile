@@ -3,7 +3,7 @@ pipeline {
   agent any
 
   environment {
-        def IMAGE_TAG = sh(script: "echo ${BUILD_TAG}_${GIT_COMMIT}`", returnStdout: true).toLowerCase().trim()
+        def IMAGE_TAG = sh(script: "echo ${BUILD_TAG}_${GIT_COMMIT}", returnStdout: true).toLowerCase().trim()
     }
 
   stages {
