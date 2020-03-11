@@ -2,6 +2,10 @@
 pipeline {
   agent any
 
+  environment {
+        def BUILD_VERSION = sh(script: "echo jenkins_node_demo_`date +%s`", returnStdout: true).trim()
+    }
+
   stages {
     stage("Env Variables") {
       steps {
@@ -10,12 +14,12 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'make build BUILD_TAG=${GIT_COMMIT}'
+        sh 'make build BUILD_TAG=${BUILD_VERSION}'
       }
     }
     stage('Test') {
       steps {
-        sh 'make test BUILD_TAG=${GIT_COMMIT}'
+        sh 'make test BUILD_TAG=${BUILD_VERSION}'
       }
     }
     stage('Publish') {
@@ -32,7 +36,7 @@ pipeline {
   }
   post {
     always {
-        sh 'make clean BUILD_TAG=${GIT_COMMIT}'
+        sh 'make clean BUILD_TAG=${BUILD_VERSION}'
     }
 
   }
