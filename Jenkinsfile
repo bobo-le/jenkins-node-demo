@@ -3,7 +3,7 @@ pipeline {
   agent any
 
   environment {
-        def BUILD_VERSION = sh(script: "echo jenkins_node_demo_`date +%s`", returnStdout: true).trim()
+        def IMAGE_TAG = sh(script: "echo ${BUILD_TAG}_${GIT_COMMIT}", returnStdout: true).toLowerCase().trim()
     }
 
   stages {
@@ -14,19 +14,19 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'make build BUILD_TAG=${BUILD_VERSION}'
+        sh 'make build BUILD_TAG=${IMAGE_TAG}'
       }
     }
     stage('Test') {
       steps {
-        sh 'make test BUILD_TAG=${BUILD_VERSION}'
+        sh 'make test BUILD_TAG=${IMAGE_TAG}'
       }
     }
     stage('Publish') {
       when {
         allOf {
           branch "release"
-          tag pattern: /^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)/, comparator: 'REGEXP'
+          //tag pattern: /^([0-9]+)\.([0-9]+)\.([0-9]+)|([0-9]+)\.([0-9]+)/, comparator: 'REGEXP'
         }
       }
       steps {
@@ -36,7 +36,7 @@ pipeline {
   }
   post {
     always {
-        sh 'make clean BUILD_TAG=${BUILD_VERSION}'
+        sh 'make clean BUILD_TAG=${IMAGE_TAG}'
     }
 
   }
