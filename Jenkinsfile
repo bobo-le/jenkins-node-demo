@@ -19,6 +19,7 @@ pipeline {
       }
     }
     stage('Publish') {
+
       when {
         allOf {
           branch "release"
