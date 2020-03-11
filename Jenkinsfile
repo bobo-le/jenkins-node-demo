@@ -3,7 +3,7 @@ pipeline {
   agent any
 
   environment {
-        def BUILD_VERSION = sh(script: "echo jenkins_node_demo_`date +%s`", returnStdout: true).trim()
+        def IMAGE_TAG = sh(script: "echo jenkIns_node_demo_`date +%s`", returnStdout: true).toLowerCase().trim()
     }
 
   stages {
@@ -14,12 +14,12 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'make build BUILD_TAG=${BUILD_VERSION}'
+        sh 'make build BUILD_TAG=${IMAGE_TAG}'
       }
     }
     stage('Test') {
       steps {
-        sh 'make test BUILD_TAG=${BUILD_VERSION}'
+        sh 'make test BUILD_TAG=${IMAGE_TAG}'
       }
     }
     stage('Publish') {
@@ -36,7 +36,7 @@ pipeline {
   }
   post {
     always {
-        sh 'make clean BUILD_TAG=${BUILD_VERSION}'
+        sh 'make clean BUILD_TAG=${IMAGE_TAG}'
     }
 
   }
